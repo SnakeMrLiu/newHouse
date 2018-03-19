@@ -83,7 +83,7 @@ flag = true;
             async: true,
             success: function (data) {
                 if (data.success || data.success == "true") {
-                    location.href = "<%=request.getContextPath()%>/login/toIndex.do";
+                    location.href = "<%=request.getContextPath()%>/tree/toIndex.do";
                 } else {
                     layer.alert("验证码错误");
                 }

@@ -20,28 +20,28 @@
 
         <div class="layui-form-item">
             <label class="layui-form-label">用户名</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="name" name="name">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">登录帐号</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="loginnumber" name="loginnumber">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">密码</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="password" class="layui-input" id="password" name="password">
             </div>
         </div>
 
         <div class="layui-form-item">
             <label class="layui-form-label">联系方式</label>
-            <div class="layui-input-block">
+            <div class="layui-input-inline">
                 <input type="text" class="layui-input" id="phonenumer" name="phonenumer">
             </div>
         </div>
@@ -108,7 +108,7 @@
                     //上传完毕回调
                     $ = layui.jquery;
                     $("#weixinImg").val(res.path);
-                    $('#weixinUpLoad').append('<img src="' + res.path + '" width="100px" height="100px" class="layui-upload-img">')
+                    $('#weixinUpLoad').append('<img src="' + res.path + '" width="100px" height="200px" class="layui-upload-img">')
                     //alert($("#weixinImage").val());
                 }else{
                     layer.msg("上传失败!");

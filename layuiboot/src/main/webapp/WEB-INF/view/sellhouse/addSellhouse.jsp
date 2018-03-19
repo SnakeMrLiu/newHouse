@@ -23,50 +23,16 @@
                 <input type="text" class="layui-input" id="price" name="price"  placeholder="￥">
             </div>
             <div class="layui-form-mid">万</div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">格局</label>
-            <div class="layui-input-inline" style="width: 50px;">
-                <input type="text" class="layui-input" id="room" name="room">
-            </div>
-            <div class="layui-form-mid">室</div>
-            <div class="layui-input-inline" style="width: 50px;">
-                <input type="text" class="layui-input" id="hall" name="hall">
-            </div>
-            <div class="layui-form-mid">厅</div>
-            <div class="layui-input-inline" style="width: 50px;">
-                <input type="text" class="layui-input" id="toilet" name="toilet">
-            </div>
-            <div class="layui-form-mid">卫</div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">面积</label>
+            <label class="layui-form-label">参考单价</label>
             <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" class="layui-input" id="area" name="area">
+                <input type="text" class="layui-input" id="unitPrice" name="unitPrice"  placeholder="￥">
             </div>
-            <div class="layui-form-mid">m²</div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">建造年代</label>
-            <div class="layui-input-inline">
-                <select name="buildingTime" id="buildingTime">
-                    <option value="">请选择</option>
-                    <option value="1">四合院</option>
-                    <option value="2">公寓</option>
-                    <option value="3">普通住宅</option>
-                    <option value="4">别墅</option>
-                    <option value="5">其他</option>
-                </select>
+            <div class="layui-form-mid">万</div>
+            <label class="layui-form-label">参考月供</label>
+            <div class="layui-input-inline"  style="width: 100px;">
+                <input type="text" class="layui-input" id="monthlyPayments" name="monthlyPayments"  placeholder="￥">
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">小区名称</label>
-            <div class="layui-input-inline">
-                <select name="community" id="communityId">
-                </select>
-            </div>
+            <div class="layui-form-mid">万</div>
         </div>
         <div class="layui-form-item">
             <label class="layui-form-label">地区</label>
@@ -83,9 +49,19 @@
                 </select>
             </div>
         </div>
+
         <div class="layui-form-item">
+            <label class="layui-form-label">建造年代</label>
+            <div class="layui-input-inline"  style="width: 100px;">
+                <select name="buildingTime" id="buildingTime">
+                    <option value="">请选择</option>
+                    <option value="1">70年代</option>
+                    <option value="2">80年代</option>
+                    <option value="3">90年代</option>
+                </select>
+            </div>
             <label class="layui-form-label">房屋类型</label>
-            <div class="layui-input-inline">
+            <div class="layui-input-inline"  style="width: 100px;">
                 <select name="roomType" id="roomType">
                     <option value="">请选择</option>
                     <option value="1">四合院</option>
@@ -95,25 +71,13 @@
                     <option value="5">其他</option>
                 </select>
             </div>
-        </div>
-        <div class="layui-form-item">
-            <label class="layui-form-label">房屋方向</label>
-            <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="roomDirection" name="roomDirection">
+            <label class="layui-form-label">小区名称</label>
+            <div class="layui-input-inline"  style="width: 100px;">
+                <select name="community" id="communityId">
+                </select>
             </div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">所在楼层</label>
-            <div class="layui-input-inline" style="width: 100px;" >
-                <input type="text" class="layui-input" id="floor" name="floor">
-            </div>
-            <div class="layui-form-mid">层</div>
-        </div>
-
-        <div class="layui-form-item">
             <label class="layui-form-label">装修程度</label>
-            <div class="layui-input-inline">
+            <div class="layui-input-inline"  style="width: 100px;">
                 <select name="decorate" id="decorate">
                     <option value=""></option>
                     <option value="1">毛坯</option>
@@ -125,19 +89,33 @@
         </div>
 
         <div class="layui-form-item">
-            <label class="layui-form-label">参考单价</label>
+            <label class="layui-form-label">格局</label>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input type="text" class="layui-input" id="room" name="room">
+            </div>
+            <div class="layui-form-mid">室</div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input type="text" class="layui-input" id="hall" name="hall">
+            </div>
+            <div class="layui-form-mid">厅</div>
+            <div class="layui-input-inline" style="width: 50px;">
+                <input type="text" class="layui-input" id="toilet" name="toilet">
+            </div>
+            <div class="layui-form-mid">卫</div>
+            <label class="layui-form-label">面积</label>
             <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" class="layui-input" id="unitPrice" name="unitPrice"  placeholder="￥">
+                <input type="text" class="layui-input" id="area" name="area">
             </div>
-            <div class="layui-form-mid">万</div>
-        </div>
-
-        <div class="layui-form-item">
-            <label class="layui-form-label">参考月供</label>
-            <div class="layui-input-inline"  style="width: 100px;">
-                <input type="text" class="layui-input" id="monthlyPayments" name="monthlyPayments"  placeholder="￥">
+            <div class="layui-form-mid">m²</div>
+            <label class="layui-form-label">房屋方向</label>
+            <div class="layui-input-inline" style="width: 80px;">
+                <input type="text" class="layui-input" id="roomDirection" name="roomDirection">
             </div>
-            <div class="layui-form-mid">万</div>
+            <label class="layui-form-label">所在楼层</label>
+            <div class="layui-input-inline" style="width: 100px;" >
+                <input type="text" class="layui-input" id="floor" name="floor">
+            </div>
+            <div class="layui-form-mid">层</div>
         </div>
 
         <div class="layui-form-item layui-form-text">
@@ -211,7 +189,18 @@
             ,layedit = layui.layedit
             ,laydate = layui.laydate
             ,upload = layui.upload;
-
+        //上传图片,必须放在 创建一个编辑器前面
+        layedit.set({
+            uploadImage: {
+                url: '../sellhouse/uploadFile' //接口url
+                ,type: 'post' //默认post
+            }
+        });
+        //创建一个编辑器
+        var editIndex = layedit.build('content',{
+                height:400
+            }
+        );
         form.on('select(province)', function (data) {
             $("#county").text("请选择县/区");
             //加载市
@@ -253,6 +242,7 @@
 
         layui.use('layedit', function(){
             layedit = layui.layedit;
+
             indexs1 = layedit.build('sellingPoint',{
                 height: 160,
             }); //建立编辑器
@@ -265,6 +255,7 @@
             indexs4 = layedit.build('serviceIntroduce',{
                 height: 160,
             }); //建立编辑器
+
         });
 
         //多图片上传

@@ -8,35 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <style>
-    ul, ol { padding: 0;}
-    .banner { position: relative; overflow: auto; text-align: center;}
-    .banner li { list-style: none; }
-    .banner ul li { float: left; }
-    #b04 { width: 640px;}
-    #b04 .dots { position: absolute; left: 0; right: 0; bottom: 20px;}
-    #b04 .dots li
-    {
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin: 0 4px;
-        text-indent: -999em;
-        border: 2px solid #fff;
-        border-radius: 6px;
-        cursor: pointer;
-        opacity: .4;
-        -webkit-transition: background .5s, opacity .5s;
-        -moz-transition: background .5s, opacity .5s;
-        transition: background .5s, opacity .5s;
-    }
-    #b04 .dots li.active
-    {
-        background: #fff;
-        opacity: 1;
-    }
-    #b04 .arrow { position: absolute; top: 200px;}
-    #b04 #al { left: 15px;}
-    #b04 #ar { right: 15px;}
+    *{margin: 0;padding:0; }
+    ul{list-style: none;}
+    .banner{width: 600px;height: 300px;border: 2px solid #ccc;margin: 100px auto;position: relative;overflow: hidden;z-index: 1;}
+    .img{position: absolute;top: 0;left: 0;}
+    .des{position: absolute;bottom: 0;left: 0;z-index: -2;background: #ccc}
+    .des li{float: left;width: 600px;}
+    .img li{float: left;}
+    .num{position: absolute;bottom: 10px;width: 100%;text-align: center;font-size: 0;}
+    .num li{width: 10px;height: 10px;background:rgba(0,0,0,0.5);display: block;border-radius: 100%;display: inline-block;margin: 0 5px;cursor: pointer;}
+    .btn{display: none;}
+    .btn span{display: block;width: 50px;height: 100px;background: rgba(0,0,0,0.6);color: #fff;font-size: 40px;line-height: 100px;text-align: center;cursor:pointer;}
+    .btn .prev{position: absolute;left: 0;top: 50%;margin-top: -50px;}
+    .btn .next{position: absolute;right: 0;top: 50%;margin-top: -50px;}
+    .num .active{background-color: #fff;}
+    .hide{display: none;}
 </style>
 <head>
     <title>房屋详情</title>
@@ -53,23 +39,20 @@
     <link rel="icon" href="https://pages.anjukestatic.com/usersite/site/img/global/1/favicon.ico" type="image/ico" />
     <script src="../js/jquery-1.8.0.js"></script>
     <script type="text/javascript" src="../js/unslider/unslider.min.js"></script>
-
+    <link rel="stylesheet" href="../js/layui/css/layui.css"/>
+    <script src="../js/layui/layui.js"></script>
 </head>
 <body>
 <input type="hidden" id="houseId" value="${houseId}">
 <div id="content">
     <div class="p_1180 p_crumbs">
-        <a href="../sellhouse/toSellHouseList"> &lt;返回</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://beijing.anjuke.com/sale/">北京二手房</a> &gt; <a href="https://beijing.anjuke.com/sale/chaoyang/">朝阳二手房</a> &gt; <a href="https://beijing.anjuke.com/sale/yayuncun/">亚运村二手房</a> &gt; <a href="https://beijing.anjuke.com/community/view/56722">紫玉山庄</a>
+        <a href="../sellhouse/toSellHouseList" class="layui-btn layui-btn-xs" >返回</a>
     </div>
-    <div class="clearfix title-guarantee">
-        <h3 class="long-title">
-            ${house.title}</h3>
-        <i title="该房源已现金担保，保证房源真实，保证可带看" class="guarantee_icon">安选验真</i>
-    </div>
+
     <div class="wrapper">
         <!--页面左侧-->
         <div class="wrapper-lf clearfix">
-            <div class="basic-info clearfix">
+            <div class="basic-info clearfix" >
                 <span class="light info-tag"><em>${house.price}</em>万</span>
                 <span class="info-tag"><em>${house.room}</em>室<em>${house.hall}</em>厅</span>
                 <span class="info-tag"><em>${house.area}</em>平方米</span>
@@ -82,33 +65,31 @@
             </div>
             <div class="switch_warpper">
                 <div class="switch_with_map">
-                    <div class="inner_switcher" id="inner_switcher">
                         <!-- 把要轮播的地方写上来 -->
+                        <!---->
                         <div class="banner" id="b04">
-                            <ul id="housesLideshow">
+                            <ul class="img" id="housesLideshow">
                             </ul>
-                            <a href="javascript:void(0);" class="unslider-arrow04 prev"><img class="arrow" id="al" src="../js/unslider/arrowl.png" alt="prev" width="20" height="35"></a>
-                            <a href="javascript:void(0);" class="unslider-arrow04 next"><img class="arrow" id="ar" src="../js/unslider/arrowr.png" alt="next" width="20" height="37"></a>
+                            <ul class="num"></ul>
+                            <div class="btn">
+                                <span class="prev"><</span>
+                                <span class="next">></span>
+                            </div>
                         </div>
-
-                        <div class="switch_list zhankeng_last" id="zhankeng_last">
-                            <div class="img_wrap zhankeng_img1"></div>
-                            <div class="img_wrap zhankeng_img2"></div>
-                        </div>
-                    </div>
+                        <!---->
                     <div class="switch_tab_wrap " id="switch_tab_wrap">
                         <a class="switch_tag switch_tag_now" href="javascript:slideshow(1);" data-track=pc_fydy_switch_snt id="room_tab">
                             <i class="switch-icon iconfont switch-room-icon">&#xE026;</i>
-                            <em class="title">室内图(<span class="num" id="imgTypeNumber1"></span>)</em>
+                            <em class="title">室内图<span id="imgTypeNumber1"></span></em>
                         </a>
 
                         <a class="switch_tag switch_tag_now" href="javascript:slideshow(2);" data-track=pc_fydy_switch_hxt id="hx_tab">
                             <i class="switch-icon iconfont switch-hx-icon">&#xE013;</i>
-                            <em class="title">户型图(<span class="num" id="imgTypeNumber2"></span>)</em>
+                            <em class="title">户型图<span id="imgTypeNumber2"></span></em>
                         </a>
                         <a class="switch_tag switch_tag_now" href="javascript:slideshow(3);" data-track=pc_fydy_switch_hjt id="surround_tab">
                             <i class="switch-icon iconfont switch-surd-icon">&#xE014;</i>
-                            <em class="title">环境图(<span class="num" id="imgTypeNumber3"></span>)</em>
+                            <em class="title">环境图<span id="imgTypeNumber3"></span></em>
                         </a>
                     </div>
                 </div>
@@ -130,7 +111,7 @@
             <a href="javascript:;" data-trace="{Exp_View_footerSeo:1}"></a>
             <div class="wrapper-rg clearfix">
                 <!-- <p class="broker-title"><i class="iconfont">&#xE019;</i><span>经纪人</span></p> -->
-                <div class="block-wrap block-nocopy brokerInfo_mod block-wrap-border">
+                <div class="block-wrap block-nocopy brokerInfo_mod block-wrap-border" style="width: auto">
                     <!--经纪人信息-->
                     <div class="broker-wrap">
                         <div class="img-box system-link-track">
@@ -304,21 +285,9 @@
             success:function(data){
                 var li = '';
                 for(var i = 0;i < data.list.length;i++){
-                    li += '<li><img src="'+data.list[i]+'" alt="图片已损坏" width="640" height="480" ></li>';
+                    li += '<li><img src="'+data.list[i]+'" alt="图片已损坏" width="600" height="300"></li>';
                 }
                 $("#housesLideshow").html(li);
-                var unslider04 = $('#b04').unslider({
-                        dots: true,
-                        fluid: true,  //响应式
-                        autoplay: true,  //自动播放
-                        arrows: false  //显示“Prev”和“Next”的箭头
-
-                    }),
-                    data04 = unslider04.data('unslider');
-                $('.unslider-arrow04').click(function() {
-                    var fn = this.className.split(' ')[1];
-                    data04[fn]();
-                });
             }
         })
     }
@@ -330,9 +299,9 @@
             dataType:"json",
             async:false,
             success:function(data){
-                $("#imgTypeNumber1").text(data.one);
-                $("#imgTypeNumber2").text(data.two);
-                $("#imgTypeNumber3").text(data.three);
+                $("#imgTypeNumber1").text("(" + data.one + ")");
+                $("#imgTypeNumber2").text("(" + data.two + ")");
+                $("#imgTypeNumber3").text("(" + data.three + ")");
                 var li = '';
                 for(var i = 0;i < data.list.length;i++){
                     li += '<li><img src="'+data.list[i]+'" alt="图片已损坏" width="640" height="480" ></li>';
@@ -340,27 +309,116 @@
                 $("#housesLideshow").html(li);
             }
         })
+        clickSlideshow();
     })
-    $(document).ready(function(e) {
-        var unslider04 = $('#b04').unslider({
-                dots: true,
-                fluid: true,  //响应式
-                autoplay: true,  //自动播放
-                arrows: false  //显示“Prev”和“Next”的箭头
 
-            }),
-            data04 = unslider04.data('unslider');
-        $('.unslider-arrow04').click(function() {
-            var fn = this.className.split(' ')[1];
-            data04[fn]();
-        });
-    });
     function showImg(){
         document.getElementById("wxImg").style.display='block';
     }
     function hideImg(){
         document.getElementById("wxImg").style.display='none';
     }
+    function clickSlideshow(){
+        var i=0;
+        var timer=null;
+        for (var j = 0; j < $('.img li').length; j++) { //创建圆点
+            $('.num').append('<li></li>')
+        }
+        $('.num li').first().addClass('active'); //给第一个圆点添加样式
+
+        var firstimg=$('.img li').first().clone(); //复制第一张图片
+        $('.img').append(firstimg).width($('.img li').length*($('.img img').width()));
+        //第一张图片放到最后一张图片后，设置ul的宽度为图片张数*图片宽度
+        $('.des').width($('.img li').length*($('.img img').width()));
+
+
+        // 下一个按钮
+        $('.next').click(function(){
+            i++;
+            if (i==$('.img li').length) {
+                i=1; //这里不是i=0
+                $('.img').css({left:0}); //保证无缝轮播，设置left值
+            };
+
+            $('.img').stop().animate({left:-i*600},300);
+            if (i==$('.img li').length-1) { //设置小圆点指示
+                $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+                $('.des li').eq(0).removeClass('hide').siblings().addClass('hide');
+            }else{
+                $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+                $('.des li').eq(i).removeClass('hide').siblings().addClass('hide');
+            }
+
+        })
+
+        // 上一个按钮
+        $('.prev').click(function(){
+            i--;
+            if (i==-1) {
+                i=$('.img li').length-2;
+                $('.img').css({left:-($('.img li').length-1)*600});
+            }
+            $('.img').stop().animate({left:-i*600},300);
+            $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+            $('.des li').eq(i).removeClass('hide').siblings().addClass('hide');
+        })
+
+        //设置按钮的显示和隐藏
+        $('.banner').hover(function(){
+            $('.btn').show();
+        },function(){
+            $('.btn').hide();
+        })
+
+        //鼠标划入圆点
+        $('.num li').mouseover(function(){
+            var _index=$(this).index();
+            $('.img').stop().animate({left:-_index*600},150);
+            $('.num li').eq(_index).addClass('active').siblings().removeClass('active');
+            $('.des li').eq(_index).removeClass('hide').siblings().addClass('hide');
+        })
+
+        //定时器自动播放
+        timer=setInterval(function(){
+            i++;
+            if (i==$('.img li').length) {
+                i=1;
+                $('.img').css({left:0});
+            };
+
+            $('.img').stop().animate({left:-i*600},300);
+            if (i==$('.img li').length-1) {
+                $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+                $('.des li').eq(0).removeClass('hide').siblings().addClass('hide');
+            }else{
+                $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+                $('.des li').eq(i).removeClass('hide').siblings().addClass('hide');
+            }
+        },1000)
+
+        //鼠标移入，暂停自动播放，移出，开始自动播放
+        $('.banner').hover(function(){
+            clearInterval(timer);
+        },function(){
+            timer=setInterval(function(){
+                i++;
+                if (i==$('.img li').length) {
+                    i=1;
+                    $('.img').css({left:0});
+                };
+
+                $('.img').stop().animate({left:-i*600},300);
+                if (i==$('.img li').length-1) {
+                    $('.num li').eq(0).addClass('active').siblings().removeClass('active');
+                    $('.des li').eq(0).removeClass('hide').siblings().addClass('hide');
+                }else{
+                    $('.num li').eq(i).addClass('active').siblings().removeClass('active');
+                    $('.des li').eq(i).removeClass('hide').siblings().addClass('hide');
+                }
+            },1000)
+        })
+    }
+
 </script>
 </head>
 <body>

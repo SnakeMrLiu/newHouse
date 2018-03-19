@@ -15,51 +15,35 @@
 </head>
 <body>
 <%--条件查询--%>
-<form class="layui-form">
+<form class="layui-form" id="searchForm">
     <div class="layui-form-item">
         <label class="layui-form-label">区域:</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-inline" style="width: 100px;">
             <select name="province" id="province" lay-filter="province">
                 <option value="">请选择省</option>
             </select>
         </div>
-        <div class="layui-input-inline">
+        <div class="layui-input-inline" style="width: 100px;">
             <select name="city" id="city" lay-filter="city">
                 <option value="">请选择市</option>
             </select>
         </div>
-        <div class="layui-input-inline">
+        <div class="layui-input-inline" style="width: 100px;">
             <select name="county" id="county">
                 <option value="">请选择县/区</option>
             </select>
         </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">售价:</label>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="minprice" id="minprice" placeholder="￥" autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid">-</div>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="maxprice" id="maxprice" placeholder="￥" autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid">万</div>
+        <label class="layui-form-label">售价:</label>
+        <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" name="minprice" id="minprice" placeholder="￥" autocomplete="off" class="layui-input">
         </div>
-    </div>
-    <div class="layui-form-item">
-        <div class="layui-inline">
-            <label class="layui-form-label">面积:</label>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="minarea" id="minarea" autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid">-</div>
-            <div class="layui-input-inline" style="width: 100px;">
-                <input type="text" name="maxarea" id="maxarea" autocomplete="off" class="layui-input">
-            </div>
-            <div class="layui-form-mid">m²</div>
+        <div class="layui-form-mid">-</div>
+        <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" name="maxprice" id="maxprice" placeholder="￥" autocomplete="off" class="layui-input">
         </div>
+        <div class="layui-form-mid">万</div>
     </div>
+
     <div class="layui-form-item" pane="">
         <label class="layui-form-label">房型:</label>
         <div class="layui-input-block">
@@ -74,7 +58,7 @@
     </div>
     <div class="layui-form-item">
         <label class="layui-form-label">更多</label>
-        <div class="layui-input-inline">
+        <div class="layui-input-inline" style="width: 100px;">
             <select name="buildingTime" id="buildingTime">
                 <option value="-1" selected="">建造年代</option>
                 <option value="1" >70年代</option>
@@ -82,27 +66,41 @@
                 <option value="3">90年代</option>
             </select>
         </div>
-        <div class="layui-input-inline" >
+        <div class="layui-input-inline" style="width: 100px;">
             <select name="roomType" id="roomType">
                 <option value="-1" selected="">房屋类型</option>
             </select>
         </div>
-        <div class="layui-input-inline">
+        <div class="layui-input-inline"style="width: 100px;">
             <select name="decorate" id="decorate">
                 <option value="-1" selected="">装修</option>
             </select>
         </div>
+        <label class="layui-form-label">面积:</label>
+        <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" name="minarea" id="minarea" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid">-</div>
+        <div class="layui-input-inline" style="width: 100px;">
+            <input type="text" name="maxarea" id="maxarea" autocomplete="off" class="layui-input">
+        </div>
+        <div class="layui-form-mid">m²</div>
+
     </div>
     <div class="layui-form-item">
-        <div class="layui-input-inline">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline" >
             <a href="#" class="layui-btn" onclick="searchSellHouse()">搜索</a>
+            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
         </div>
+
     </div>
 </form>
     <table class="layui-table" id="LAY_table_house" lay-filter="test"></table>
     <div id="laypage"></div>
 </body>
 <script>
+
     function searchSellHouse() {
         var province = $("#province").val();
         var city = $("#city").val();
@@ -241,19 +239,19 @@
                 , cols: [[
                     {checkbox: true}
                     , {field: 'title', title: '标题', width: 100}
-                    , {field: 'price', title: '售价', width: 120}
+                    , {field: 'price', title: '售价', width: 100}
                     , {field: 'room', title: '室', width: 60}
                     , {field: 'hall', title: '厅', width: 60}
                     , {field: 'area', title: '面积', width: 60}
-                    , {field: 'garden', title: '所属小区', width: 160}
-                    , {field: 'houseType', title: '房屋类型', width: 100}
-                    , {field: 'floor', title: '所在楼层', width: 100}
-                    , {field: 'fitment', title: '装修程度', width: 100}
-                    , {field: 'releaseTime', title: '发布日期', width: 130}
+                    , {field: 'garden', title: '所属小区', width: 120}
+                    , {field: 'houseType', title: '房屋类型', width: 80}
+                    , {field: 'floor', title: '所在楼层', width: 80}
+                    , {field: 'fitment', title: '装修程度', width: 80}
+                    , {field: 'releaseTime', title: '发布日期', width: 120}
                     , {field: '', title: '操作', toolbar: '#barDemo'}
                 ]]
                 , page: false
-                , height: 450
+                , height: 230
                 , done: function (res, curr, count) {
                     //如果是异步请求数据方式，res即为你接口返回的信息。
                     //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度

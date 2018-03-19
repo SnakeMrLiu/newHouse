@@ -49,12 +49,12 @@
                     ,{field:'id', title: 'ID', width:100}
                     ,{field:'name', title: '姓名', width:100}
                     ,{field:'weixin', title: '微信二维码', width:100,
-                        templet:'<div><img src="{{d.weixin}}"></div>',
-                        style:'height:30px;width:50px;line-height:50px!important;'
+                        templet:'<div><img src="{{d.weixin}}" style="height:300px;width:50px"></div>',
+                        style:'height:100px;width:80px;line-height:50px!important;'
                     }
                     ,{field:'photo', title: '头像', width:100,
-                        templet:'<div><img src="{{d.photo}}"></div>',
-                        style:'height:30px;width:50px;line-height:50px!important;'
+                        templet:'<div><img src="{{d.photo}}" style="height:100%;width:100%"></div>',
+                        style:'height:100px;width:80px;line-height:50px!important;'
                     }
                     ,{field:'phonenumer', title: '联系方式', width:100}
                     ,{field:'loginnumber', title: '登录帐号', width:100}

@@ -211,6 +211,13 @@
             ,layedit = layui.layedit
             ,laydate = layui.laydate
             ,upload = layui.upload;
+        //上传图片,必须放在 创建一个编辑器前面
+        layedit.set({
+            uploadImage: {
+                url: '../sellhouse/uploadFile' //接口url
+                ,type: 'post' //默认post
+            }
+        });
         layui.use('layedit', function(){
             layedit = layui.layedit;
             indexs1 = layedit.build('sellingPoint',{
@@ -234,6 +241,7 @@
             ,url: '../sellhouse/headImgUpload' //上传接口
             ,multiple: true
             ,done: function(res){
+                $("#demo1").empty();
                 //上传完毕回调
                 $ = layui.jquery;
                 $("#photoDiv1").append('<input type="hidden" name="url" value="'+res.path+'">');
@@ -247,6 +255,7 @@
             ,url: '../sellhouse/headImgUpload' //上传接口
             ,multiple: true
             ,done: function(res){
+                $("#demo2").empty();
                 //上传完毕回调
                 $ = layui.jquery;
                 $("#photoDiv2").append('<input type="hidden" name="url" value="'+res.path+'">');
@@ -260,6 +269,7 @@
             ,url: '../sellhouse/headImgUpload' //上传接口
             ,multiple: true
             ,done: function(res){
+                $("#demo3").empty();
                 //上传完毕回调
                 $ = layui.jquery;
                 $("#photoDiv3").append('<input type="hidden" name="url" value="'+res.path+'">');
@@ -314,6 +324,7 @@
                 async: true,
                 success: function (data) {
                         layer.alert("修改成功")
+                    location.href="../sellhouse/toSellHouseList";
                 },
                 error:function (){
                     layer.alert("修改成功")

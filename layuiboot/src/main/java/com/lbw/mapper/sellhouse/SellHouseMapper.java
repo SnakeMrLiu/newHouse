@@ -136,7 +136,7 @@ public interface SellHouseMapper {
     @Select(value = "SELECT * FROM t_sell_house_pic WHERE sid = #{sid}")
     List<SellHousePic> queryImg(String sid);
 
-    @Delete("delete from t_sell_house_pic where id =#{id} and imgtype = #{imgtype}")
+    @Delete("delete from t_sell_house_pic where sid =#{id} and imgtype = #{imgtype}")
     void delPhpoto(@Param("id") String id, @Param("imgtype")String imgtype);
 
     @Select("SELECT p.url FROM t_sell_house_pic p LEFT JOIN t_sell_house_resource h ON p.sid = h.id WHERE h.id = #{sid} AND p.imgtype = #{type}")

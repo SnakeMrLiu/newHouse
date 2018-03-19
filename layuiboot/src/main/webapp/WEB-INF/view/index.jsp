@@ -7,7 +7,7 @@
     <%--<script src="../js/layui/layui.all.js"></script>--%>
     <script src="../js/jquery-1.8.0.js"></script>
 </head>
-<body>
+<body bgcolor="#e9e9e9">
 
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header">
@@ -16,15 +16,15 @@
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
-                    贤心
+                    <img src="${emp.photo}" class="layui-nav-img">
+                    ${emp.name}
                 </a>
                 <dl class="layui-nav-child">
                     <dd><a href="">基本资料</a></dd>
                     <dd><a href="">安全设置</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="">退出</a></li>
+            <li class="layui-nav-item"><a href="../login/logoutEmp">退出</a></li>
         </ul>
     </div>
 
@@ -121,7 +121,7 @@
     })
     });
     function createFrame(url){
-        return '<iframe frameborder="0"  src="'+ url + '" style="width:100%;height:500%;" scrolling="no" ></iframe>';
+        return '<iframe frameborder="0"  src="'+ url + '" style="width:100%;height:100%;"  ></iframe>';
     }
 
     function hasTab(title){

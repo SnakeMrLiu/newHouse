@@ -1,5 +1,8 @@
 server:
   port: ${port:8088}
+  jsp-servlet:
+    init-parameters:
+      development: true
 spring:
   mvc:
     view:

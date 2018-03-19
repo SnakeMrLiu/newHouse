@@ -145,17 +145,20 @@ public class SellHouseServiceImpl implements  SellHouseService {
             String[] url = sellhouseresource.getUrl().split(",");
             String[] imgType = sellhouseresource.getImgtype().split(",");
             List<SellHousePic> list = new ArrayList<SellHousePic>();
+
             for (int i = 0;i<url.length;i++) {
                 SellHousePic sellHousePic = new SellHousePic();
+                sellHousePic.setId(UUID.randomUUID().toString().replace("-",""));
                 sellHousePic.setSid(sellhouseresource.getId());
                 sellHousePic.setUrl(url[i]);
                 sellHousePic.setImgtype(Integer.parseInt(imgType[i]));
                 list.add(sellHousePic);
             }
-            sellHouseMapper.delPhpoto(sellhouseresource.getId(),sellhouseresource.getImgtype());
+            String[] split = sellhouseresource.getImgtype().split(",");
+            sellHouseMapper.delPhpoto(sellhouseresource.getId(),split[0]);
             sellHouseMapper.addPhoto(list);
         }
-         sellHouseMapper.updateHouseInfo(sellhouseresource);
+        sellHouseMapper.updateHouseInfo(sellhouseresource);
     }
 
     /**
