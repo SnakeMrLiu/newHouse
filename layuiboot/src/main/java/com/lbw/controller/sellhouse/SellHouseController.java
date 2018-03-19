@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -216,6 +217,25 @@ public class SellHouseController {
             map.put("success", false);
         }
         return map;
+    }
+
+    /**
+     * 我的发布
+     * @return
+     */
+    @RequestMapping(value = "myRelease")
+    public String myRelease(){
+        return  "sellhouse/myRelease";
+    }
+
+    //接收前台传来的page和number带参继续传后台查询分页
+    //查询个人发布
+    @RequestMapping(value = "queryMyHouse")
+    @ResponseBody
+    public String queryMyHouse(Integer page, Integer number,HttpServletRequest request,SellHouseResource houseResource){
+        HttpSession session = request.getSession();
+        Emp user = (Emp)session.getAttribute(session.getId());
+        return  sellHouseService.queryMyHouse(page,number,request,houseResource,user.getId());
     }
 
     /**

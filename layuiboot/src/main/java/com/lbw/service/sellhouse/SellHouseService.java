@@ -48,4 +48,6 @@ public interface SellHouseService {
     Map<String,Object> slideshow(Integer type, String sid);
 
     Map<String,Object> slideshowCount(String houseId);
+
+    String queryMyHouse(Integer page, Integer number, HttpServletRequest request, SellHouseResource houseResource, String id);
 }

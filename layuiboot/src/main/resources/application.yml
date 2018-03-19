@@ -3,7 +3,18 @@ server:
   jsp-servlet:
     init-parameters:
       development: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 spring:
+  application:
+      name: layuiboot
+  data:
+      mongodb:
+        host: 127.0.0.1
+        database: test
+        port: 27017
   mvc:
     view:
       suffix: .jsp

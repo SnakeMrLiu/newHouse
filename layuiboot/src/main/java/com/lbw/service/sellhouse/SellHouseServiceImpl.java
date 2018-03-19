@@ -193,4 +193,16 @@ public class SellHouseServiceImpl implements  SellHouseService {
         map.put("list",urls);
         return map;
     }
+    @Override
+    public String queryMyHouse(Integer page, Integer number, HttpServletRequest request, SellHouseResource houseResource, String id) {
+        page = (page - 1) * number;
+        Integer total = sellHouseMapper.queryMyHouseCount(houseResource,id);
+        List<SellHouseResource> list = sellHouseMapper.queryMyHouse(page,number,houseResource,id);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", 0);
+        jsonObject.put("msg", "");
+        jsonObject.put("count", total);
+        jsonObject.put("data", list);
+        return jsonObject.toString();
+    }
 }

@@ -1,11 +1,13 @@
 package com.lbw.service.clerk;
 
 import com.lbw.mapper.clerk.UserLoginMapper;
+import com.lbw.pojo.login.LogBean;
 import com.lbw.pojo.sellhouse.Emp;
 import com.lbw.utils.clerk.ConBean;
 import com.lbw.utils.clerk.HttpClient;
 import com.lbw.utils.clerk.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,9 @@ public class UserLoginServiceImpl implements UserLoginService{
 
     @Autowired
     private UserLoginMapper userLoginMapper;
+
+    @Autowired
+    private MongoTemplate mongoTemplate;
 
     /**
      * 手机短信登录
@@ -87,7 +92,10 @@ public class UserLoginServiceImpl implements UserLoginService{
         HttpClient.post(ConBean.SMS_URL, params);
     }
 
-
+    @Override
+    public void loginUser(LogBean logBean) {
+        mongoTemplate.insert(logBean);
+    }
 
 
 }
