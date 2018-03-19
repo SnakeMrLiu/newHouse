@@ -192,7 +192,7 @@
         //上传图片,必须放在 创建一个编辑器前面
         layedit.set({
             uploadImage: {
-                 url: '../sellhouse/uploadFile' //接口url
+                url: '../sellhouse/uploadFile' //接口url
                 ,type: 'post' //默认post
             }
         });
@@ -242,6 +242,7 @@
 
         layui.use('layedit', function(){
             layedit = layui.layedit;
+
             indexs1 = layedit.build('sellingPoint',{
                 height: 160,
             }); //建立编辑器
@@ -254,6 +255,7 @@
             indexs4 = layedit.build('serviceIntroduce',{
                 height: 160,
             }); //建立编辑器
+
         });
 
         //多图片上传

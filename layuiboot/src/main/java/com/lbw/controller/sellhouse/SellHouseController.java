@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -69,22 +67,47 @@ public class SellHouseController {
     public String toSellHouseList(){
         return "sellhouse/sellHouseList";
     }
-
     /**
-     * toQueryHousePage
-     * 跳转到房屋详情的页面
-     * @return
+     * 富文本编辑器图片上传
      */
-  /*  @RequestMapping(value = "toQueryHousePage")
+    @RequestMapping(value = "uploadFile",method = RequestMethod.POST)
     @ResponseBody
-    public ModelAndView toQueryHousePage(String id){
-        ModelAndView mv = new ModelAndView("sellhouse/housedetails");
-        HashMap<String, Object> map = new HashMap<>();
-        SellHouseResource sellHouseResource = sellHouseService.queryOneHouse(id);
-        map.put("house",sellHouseResource);
-        mv.addAllObjects(map);
-        return mv;
-    }*/
+    public String upload(HttpServletRequest request, MultipartFile file) throws Exception {
+        Map<String,Object> map = new HashMap<String, Object>();
+        Map<String,Object> map2 = new HashMap<String, Object>();
+        try {
+            if (file == null || file.getSize() <= 0) {
+                throw new Exception("图片不能为空");
+            }
+            String  nameHz= file.getOriginalFilename(); //上传的文件名 + 后缀    如  asd.png
+            String type = "";
+            if(nameHz.contains(".png") || nameHz.contains(".jpg")){
+                type="img";
+            }
+            if(nameHz.contains(".mp4") || nameHz.contains(".ogv")){
+                type="video";
+            }else {
+                type="file";
+            }
+            OssClienUtils ossClient = new OssClienUtils();
+            String keyName = ossClient.uploadImg2Oss(file,type);
+            String imgUrl = ossClient.getImgUrl(keyName);
+            System.out.println(imgUrl);
+            map2.put("src",imgUrl);//图片url
+            map2.put("width","100px");//图片url
+            map2.put("height","100px");//图片url
+            map.put("code",0);//0表示成功，1失败
+            map.put("msg","上传成功");//提示消息
+            map.put("data",map2);
+        }catch (Exception e){
+            map.put("code",1);//0表示成功，1失败
+            map.put("msg","上传失败");//提示消息
+            e.printStackTrace();
+        }
+        String result = new JSONObject(map).toString();
+        return result;
+    }
+
     /**
      * toQueryHousePage
      * 跳转到房屋详情的页面
@@ -237,44 +260,4 @@ public class SellHouseController {
         return map;
     }
 
-    /**
-     * 富文本编辑器图片上传
-     */
-    @RequestMapping(value = "uploadFile",method = RequestMethod.POST)
-    @ResponseBody
-    public String upload(HttpServletRequest request, MultipartFile file) throws Exception {
-        Map<String,Object> map = new HashMap<String, Object>();
-        Map<String,Object> map2 = new HashMap<String, Object>();
-        try {
-            if (file == null || file.getSize() <= 0) {
-                throw new Exception("图片不能为空");
-            }
-            String  nameHz= file.getOriginalFilename(); //上传的文件名 + 后缀    如  asd.png
-            String type = "";
-            if(nameHz.contains(".png") || nameHz.contains(".jpg")){
-                type="img";
-            }
-            if(nameHz.contains(".mp4") || nameHz.contains(".ogv")){
-                type="video";
-            }else {
-                type="file";
-            }
-            OssClienUtils ossClient = new OssClienUtils();
-            String keyName = ossClient.uploadImg2Oss(file,type);
-            String imgUrl = ossClient.getImgUrl(keyName);
-            System.out.println(imgUrl);
-            map2.put("src",imgUrl);//图片url
-            map2.put("width","100px");//图片宽度
-            map2.put("height","100px");//图片高度
-            map.put("code",0);//0表示成功，1失败
-            map.put("msg","上传成功");//提示消息
-            map.put("data",map2);
-            }catch (Exception e){
-            map.put("code",1);//0表示成功，1失败
-            map.put("msg","上传失败");//提示消息
-            e.printStackTrace();
-        }
-        String result = new JSONObject(map).toString();
-        return result;
-    }
 }

@@ -19,7 +19,14 @@ public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
 
-
+    /**
+     * 注消
+     */
+    @RequestMapping(value = "logoutEmp")
+    public void logoutEmp(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.removeAttribute(session.getId());
+    }
 
     /**
      * 我就跳一下
@@ -45,6 +52,7 @@ public class UserLoginController {
         try {
             if (emp != null){
                 session.setAttribute(session.getId(),emp);
+                session.setAttribute("emp",emp);
                 map.put("success",true);
             }else {
                 map.put("success",false);
