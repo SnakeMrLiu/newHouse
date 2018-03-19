@@ -30,24 +30,16 @@ public class UserLoginServiceImpl implements UserLoginService{
      */
     @Override
     public Emp getUserNumber(String loginnumber, String verification) {
-
-        String checkCode = redisTemplate.opsForValue().get(loginnumber + "checkcode").toString();
-        if (checkCode == null
-                || checkCode.equals("")
-                || verification == null
-                || verification.equals("")
-                || !verification.equals(checkCode)){
-            return null;
-        }else{
-            Emp emp = userLoginMapper.getUserNumber(loginnumber);
-            if(emp == null){
-                return null;
-            }else{
+        Emp emp = userLoginMapper.getUserNumber(loginnumber);
+        if (emp != null && redisTemplate.opsForValue().get(loginnumber+"checkcode")!=null) {
+            if (verification.equals(redisTemplate.opsForValue().get(loginnumber+"checkcode"))){
                 redisTemplate.delete(emp.getLoginnumber()+"checkcode");
                 return emp;
             }
+        }else{
+            return emp;
         }
-
+        return null;
     }
 
 

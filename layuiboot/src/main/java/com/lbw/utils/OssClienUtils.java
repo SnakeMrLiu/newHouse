@@ -16,7 +16,7 @@ import java.util.Random;
 /**
  * 阿里云 OSS文件类  参考文档  https://help.aliyun.com/product/31815.html?spm=5176.750001.2.8.SZvzsM
  *
- * @author sunzhenyang
+ * @author  sunzhenyang
  */
 public class OssClienUtils {
 
@@ -55,7 +55,6 @@ public class OssClienUtils {
     public void uploadImg2Oss(String url) throws Exception {
         File fileOnServer = new File(url);
         FileInputStream fin;
-
         try {
             fin = new FileInputStream(fileOnServer);
             String[] split = url.split("/");
@@ -67,13 +66,12 @@ public class OssClienUtils {
 
     /**
      * 上传图片
-     *
      * @param file
-     * @return key   可根据key获取上到到服务器的志愿和删除等操作
+     * @return    key   可根据key获取上到到服务器的志愿和删除等操作
      * @throws Exception
      */
     public String uploadImg2Oss(MultipartFile file, String typeDate) throws Exception {
-        this.date = typeDate;
+        this.date=typeDate;
 //    if (file.getSize() > 1024 * 1024) {
 //      throw new Exception("上传图片大小不能超过1M！");
 //    }
@@ -141,6 +139,7 @@ public class OssClienUtils {
     }
 
 
+
     /**
      * Description: 判断OSS服务文件上传时文件的contentType
      *
@@ -202,7 +201,7 @@ public class OssClienUtils {
     /**
      * 删除单个文件
      */
-    public void delFile(String key) {
+    public void delFile(String key){
         ossClient.deleteObject(bucketName, key);
     }
 

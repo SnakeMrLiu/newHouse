@@ -46,7 +46,8 @@
 <input type="hidden" id="houseId" value="${houseId}">
 <div id="content">
     <div class="p_1180 p_crumbs">
-        <a href="../sellhouse/toSellHouseList" class="layui-btn layui-btn-xs" >返回</a>
+        <a href="../sellhouse/toSellHouseList" class="layui-btn" >返回</a>
+        <a href="#" class="layui-btn" id="orderBtn">预约</a>
     </div>
 
     <div class="wrapper">
@@ -66,7 +67,6 @@
             <div class="switch_warpper">
                 <div class="switch_with_map">
                         <!-- 把要轮播的地方写上来 -->
-                        <!---->
                         <div class="banner" id="b04">
                             <ul class="img" id="housesLideshow">
                             </ul>
@@ -76,7 +76,6 @@
                                 <span class="next">></span>
                             </div>
                         </div>
-                        <!---->
                     <div class="switch_tab_wrap " id="switch_tab_wrap">
                         <a class="switch_tag switch_tag_now" href="javascript:slideshow(1);" data-track=pc_fydy_switch_snt id="room_tab">
                             <i class="switch-icon iconfont switch-room-icon">&#xE026;</i>
@@ -418,7 +417,18 @@
             },1000)
         })
     }
+    //预约
+    $("#orderBtn").click(function(){
+        $.ajax({
+            url:"../customer/orderHouser",
+            type:"post",
+            data:{"houseId":$("#houseId").val()},
+            dataType:"json",
+            success:function(data){
 
+            }
+        })
+    })
 </script>
 </head>
 <body>

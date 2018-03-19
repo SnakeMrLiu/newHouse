@@ -1,6 +1,6 @@
 package com.lbw.mapper.sellhouse;
 
-import com.lbw.pojo.house.SellHouseResource;
+import com.lbw.pojo.sellhouse.SellHouseResource;
 
 public class TutorDynaSqlProvider {
     public String findTutorByIdSql(SellHouseResource houseResource)

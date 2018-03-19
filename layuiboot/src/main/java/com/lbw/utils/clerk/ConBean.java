@@ -8,6 +8,10 @@ public class ConBean {
      * 短信平台接口地址
      */
     public static final String SMS_URL = "https://api.miaodiyun.com/20150822/industrySMS/sendSMS";
+    /**
+     * 验证码平台接口地址
+     */
+    public static final String CHECKCODE_URL = "http://c.dun.163yun.com/api/v2/verify";
 
     /**
      *个人平台Id

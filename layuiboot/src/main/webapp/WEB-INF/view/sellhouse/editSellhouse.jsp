@@ -211,13 +211,6 @@
             ,layedit = layui.layedit
             ,laydate = layui.laydate
             ,upload = layui.upload;
-        //上传图片,必须放在 创建一个编辑器前面
-        layedit.set({
-            uploadImage: {
-                url: '../sellhouse/uploadFile' //接口url
-                ,type: 'post' //默认post
-            }
-        });
         layui.use('layedit', function(){
             layedit = layui.layedit;
             indexs1 = layedit.build('sellingPoint',{
@@ -336,7 +329,6 @@
             indexs4 = layedit.build('serviceIntroduce'); //建立编辑器
         })
     }
-
     //页面加载小区下拉框
         $.ajax({
             url:'../sellhouse/queryCommunity',

@@ -137,7 +137,6 @@
         var form = layui.form;
         form.on('select(province)', function (data) {
             //加载市
-
             $.ajax({
                 url:"../sellhouse/queryArea",
                 type:"post",
@@ -251,7 +250,7 @@
                     , {field: '', title: '操作', toolbar: '#barDemo'}
                 ]]
                 , page: false
-                , height: 230
+                , height: 350
                 , done: function (res, curr, count) {
                     //如果是异步请求数据方式，res即为你接口返回的信息。
                     //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度
