@@ -45,4 +45,7 @@ public interface EmpMapper {
             "\t\tname = #{name},weixin = #{weixin},photo = #{photo},phonenumer = #{phonenumer},loginnumber = #{loginnumber},password = #{password}\n" +
             "\t\tWHERE id = #{id}")
     void updateEmpInfo(Emp emp);
+    //新增员工角色关联表
+    @Insert(value = "INSERT INTO t_emp_role (id,emp_id,role_id) VALUES(#{emp_Role_id},#{emp.id},#{emp.role_id})")
+    void addEmp_RoleInfo(@Param(value = "emp") Emp emp, @Param(value = "emp_Role_id") String emp_Role_id);
 }

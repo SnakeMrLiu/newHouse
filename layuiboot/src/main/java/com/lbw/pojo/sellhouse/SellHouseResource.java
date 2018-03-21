@@ -31,7 +31,6 @@ public class SellHouseResource {
   private String ownerMentality;//业主心态
   private String communityComplete;//小区配套
   private String serviceIntroduce;//服务介绍(富文本)
-
   private Date   releaseTime;//发布日期
   private String roomNum;//房屋编号
   private String ename;//员工别名
@@ -44,13 +43,9 @@ public class SellHouseResource {
   private String shi;//市
   private String xian;//县
   private Integer minprice;//最小售价
-
   private Integer maxprice;//最大售价
-
   private Double minarea;//最小面积
-
   private Double maxarea;//最大面积
-
   /**
    * 经纪人姓名
    */
@@ -67,6 +62,28 @@ public class SellHouseResource {
    * 经纪人手机号
    */
   private String empphone;
+  /**
+   * 房屋状态
+   * 1、待租
+   * 2、已租
+   */
+  private Integer status;
+  /**
+   * 楼号
+   */
+  private Integer tower;
+  /**
+   * 单元号
+   */
+  private Integer unit;
+  /**
+   * 门牌号
+   */
+  private Integer houseNum;
+  /**
+   * 租金(每月)
+   */
+  private Double rent;
 
   public String getEmpname() {
     return empname;
@@ -228,7 +245,7 @@ public class SellHouseResource {
     this.title = title;
   }
 
-  public long getPrice() {
+  public Integer getPrice() {
     return price;
   }
 
@@ -405,5 +422,98 @@ public class SellHouseResource {
 
   public void setRoomNum(String roomNum) {
     this.roomNum = roomNum;
+  }
+
+  public Integer getStatus() {
+    return status;
+  }
+
+  public void setStatus(Integer status) {
+    this.status = status;
+  }
+
+  public Integer getTower() {
+    return tower;
+  }
+
+  public void setTower(Integer tower) {
+    this.tower = tower;
+  }
+
+  public Integer getUnit() {
+    return unit;
+  }
+
+  public void setUnit(Integer unit) {
+    this.unit = unit;
+  }
+
+  public Integer getHouseNum() {
+    return houseNum;
+  }
+
+  public void setHouseNum(Integer houseNum) {
+    this.houseNum = houseNum;
+  }
+
+  public Double getRent() {
+    return rent;
+  }
+
+  public void setRent(Double rent) {
+    this.rent = rent;
+  }
+
+  @Override
+  public String toString() {
+    return "SellHouseResource{" +
+            "id='" + id + '\'' +
+            ", eid='" + eid + '\'' +
+            ", title='" + title + '\'' +
+            ", price=" + price +
+            ", room=" + room +
+            ", hall=" + hall +
+            ", toilet=" + toilet +
+            ", area=" + area +
+            ", community='" + community + '\'' +
+            ", province=" + province +
+            ", city=" + city +
+            ", county=" + county +
+            ", buildingTime=" + buildingTime +
+            ", roomType='" + roomType + '\'' +
+            ", roomDirection='" + roomDirection + '\'' +
+            ", floor='" + floor + '\'' +
+            ", decorate='" + decorate + '\'' +
+            ", unitPrice=" + unitPrice +
+            ", monthlyPayments=" + monthlyPayments +
+            ", sellingPoint='" + sellingPoint + '\'' +
+            ", ownerMentality='" + ownerMentality + '\'' +
+            ", communityComplete='" + communityComplete + '\'' +
+            ", serviceIntroduce='" + serviceIntroduce + '\'' +
+            ", releaseTime=" + releaseTime +
+            ", roomNum='" + roomNum + '\'' +
+            ", ename='" + ename + '\'' +
+            ", imgtype='" + imgtype + '\'' +
+            ", url='" + url + '\'' +
+            ", garden='" + garden + '\'' +
+            ", houseType='" + houseType + '\'' +
+            ", fitment='" + fitment + '\'' +
+            ", sheng='" + sheng + '\'' +
+            ", shi='" + shi + '\'' +
+            ", xian='" + xian + '\'' +
+            ", minprice=" + minprice +
+            ", maxprice=" + maxprice +
+            ", minarea=" + minarea +
+            ", maxarea=" + maxarea +
+            ", empname='" + empname + '\'' +
+            ", empweixin='" + empweixin + '\'' +
+            ", empphoto='" + empphoto + '\'' +
+            ", empphone='" + empphone + '\'' +
+            ", status=" + status +
+            ", tower=" + tower +
+            ", unit=" + unit +
+            ", houseNum=" + houseNum +
+            ", rent=" + rent +
+            '}';
   }
 }

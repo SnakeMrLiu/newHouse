@@ -20,8 +20,6 @@ public class CustomerSeviceImpl implements CustomerService{
     @Override
     public String queryCustomer(Integer page, Integer number, HttpServletRequest request,Customer customer) {
         page = (page - 1) * number;
-
-
         Integer total = customerMapper.queryCustomercount(customer);
         List<Customer> list = customerMapper.queryCustomer(page,number,customer);
         JSONObject jsonObject = new JSONObject();

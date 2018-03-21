@@ -5,5 +5,5 @@ import com.lbw.pojo.tree.Tree;
 import java.util.List;
 
 public interface TreeService {
-    List<Tree> getTree();
+    List<Tree> getTree(String id);
 }

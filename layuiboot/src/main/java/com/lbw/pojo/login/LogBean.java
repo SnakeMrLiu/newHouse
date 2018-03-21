@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Document(collection = "layuiLog")
@@ -13,6 +14,8 @@ public class LogBean implements Serializable {
     private String id;
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date logTime;
+
+    private String eid;
 
     private String ip;
 
@@ -24,6 +27,14 @@ public class LogBean implements Serializable {
 
     private String responseInfo;
 
+    public String getEid() {
+        return eid;
+    }
+
+    public void setEid(String eid) {
+        this.eid = eid;
+    }
+
     public String getId() {
         return id;
     }
@@ -32,8 +43,12 @@ public class LogBean implements Serializable {
         this.id = id;
     }
 
-    public Date getLogTime() {
-        return logTime;
+    public String getLogTime() {
+        if(logTime == null){
+            return null;
+        }
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        return s.format(logTime);
     }
 
     public void setLogTime(Date logTime) {
@@ -78,5 +93,19 @@ public class LogBean implements Serializable {
 
     public void setResponseInfo(String responseInfo) {
         this.responseInfo = responseInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "LogBean{" +
+                "id='" + id + '\'' +
+                ", logTime=" + logTime +
+                ", eid='" + eid + '\'' +
+                ", ip='" + ip + '\'' +
+                ", funcName='" + funcName + '\'' +
+                ", ipAddress='" + ipAddress + '\'' +
+                ", requestInfo='" + requestInfo + '\'' +
+                ", responseInfo='" + responseInfo + '\'' +
+                '}';
     }
 }

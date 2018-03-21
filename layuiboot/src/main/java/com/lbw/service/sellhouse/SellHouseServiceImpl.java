@@ -205,4 +205,17 @@ public class SellHouseServiceImpl implements  SellHouseService {
         jsonObject.put("data", list);
         return jsonObject.toString();
     }
+
+    @Override
+    public String queryUnrentableHouse(Integer page, Integer number, HttpServletRequest request) {
+        page = (page - 1) * number;
+        Integer total = sellHouseMapper.queryUnrentableHouseCount();
+        List<SellHouseResource> list = sellHouseMapper.queryUnrentableHouse(page,number);
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", 0);
+        jsonObject.put("msg", "");
+        jsonObject.put("count", total);
+        jsonObject.put("data", list);
+        return jsonObject.toString();
+    }
 }

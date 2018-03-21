@@ -20,7 +20,7 @@ public interface SellHouseMapper {
     List<Area> queryArea(Integer pid);
 
     @Select("<script>" +
-            "SELECT tshr.id,tshr.eid,tshr.title,tshr.price,tshr.room,tshr.hall,te.name ename,tshr.toilet,tshr.AREA,tc.name garden,tshr.province,tshr.city,tshr.county,tshr.buildingTime,tht.name houseType,tshr.roomDirection,tshr.FLOOR,td.name fitment,tshr.unitPrice,tshr.monthlyPayments,tshr.sellingPoint,tshr.ownerMentality,tshr.communityComplete,tshr.serviceIntroduce,tshr.releaseTime,tshr.roomNum \n" +
+            "SELECT tshr.id,tshr.eid,tshr.title,tshr.price,tshr.room,tshr.hall,te.name ename,tshr.toilet,tshr.AREA,tc.name garden,tshr.province,tshr.city,tshr.county,tshr.buildingTime,tht.name houseType,tshr.roomDirection,tshr.FLOOR,td.name fitment,tshr.unitPrice,tshr.monthlyPayments,tshr.sellingPoint,tshr.ownerMentality,tshr.communityComplete,tshr.serviceIntroduce,tshr.releaseTime,tshr.roomNum,tshr.rent \n" +
             "FROM t_sell_house_resource tshr\n" +
             "LEFT JOIN t_community tc ON tc.id=tshr.community \n" +
             "LEFT JOIN t_decorate td ON  td.id=tshr.decorate \n" +
@@ -185,6 +185,10 @@ public interface SellHouseMapper {
             "limit #{page},#{number}"
             +"</script>")
     List<SellHouseResource> queryMyHouse(@Param(value = "page") Integer page, @Param(value = "number") Integer number,@Param(value = "houseResource")SellHouseResource houseResource,@Param(value = "id")String id);
+    @Select("SELECT * FROM t_sell_house_resource WHERE STATUS = 1 LIMIT #{page},#{number}")
+    List<SellHouseResource> queryUnrentableHouse(@Param(value = "page") Integer page, @Param(value = "number") Integer number);
 
+    @Select("SELECT COUNT(1) FROM t_sell_house_resource WHERE STATUS = 1")
+    Integer queryUnrentableHouseCount();
 
 }

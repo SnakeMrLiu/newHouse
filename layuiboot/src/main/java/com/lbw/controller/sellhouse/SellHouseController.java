@@ -237,6 +237,12 @@ public class SellHouseController {
         Emp user = (Emp)session.getAttribute(session.getId());
         return  sellHouseService.queryMyHouse(page,number,request,houseResource,user.getId());
     }
+    @RequestMapping(value = "queryUnrentableHouse")
+    @ResponseBody
+    //接收前台传来的page和number带参继续传后台查询分页
+    public String queryUnrentableHouse(Integer page, Integer number,HttpServletRequest request){
+        return  sellHouseService.queryUnrentableHouse(page,number,request);
+    }
 
     /**
      * deleteHouseOne
@@ -274,7 +280,7 @@ public class SellHouseController {
     @RequestMapping(value = "queryImg")
     @ResponseBody
     public Map<String, Object> queryImg(String sid){
-        Map<String,Object> map = new HashMap<>();
+        Map<String,Object> map = new HashMap<String,Object>();
         List<SellHousePic> sellHousePic = sellHouseService.queryImg(sid);
         map.put("list",sellHousePic);
         return map;

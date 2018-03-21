@@ -1,5 +1,6 @@
 package com.lbw.controller.tree;
 
+import com.lbw.pojo.sellhouse.Emp;
 import com.lbw.pojo.tree.Tree;
 import com.lbw.service.tree.TreeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -22,8 +25,10 @@ public class TreeController {
     //首页加载树
     @RequestMapping(value = "getTree")
     @ResponseBody
-    public List<Map<String, Object>> getTree(){
-        List<Tree> list = treeService.getTree();
+    public List<Map<String, Object>> getTree(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Emp emp = (Emp)session.getAttribute(session.getId());
+        List<Tree> list = treeService.getTree(emp.getId());
         List<Map<String, Object>> list2 = getMap(list,0);
         return list2;
     }

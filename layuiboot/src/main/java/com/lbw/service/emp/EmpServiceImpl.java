@@ -65,9 +65,14 @@ public class EmpServiceImpl implements EmpService{
         emp.setId(UUID.randomUUID().toString().replaceAll("-",""));
         //密码用MD5加密
         emp.setPassword(Md5Util.getMd532(emp.getPassword()));
+        //新增员工信息
         empMapper.addEmpInfo(emp);
-    }
 
+        //添加员工角色关联表ID
+        String emp_Role_id = UUID.randomUUID().toString().replaceAll("-", "");
+        //新增员工角色关联表
+        empMapper.addEmp_RoleInfo(emp,emp_Role_id);
+    }
     /**
      * 查询修改回填信息
      * @param id

@@ -69,6 +69,7 @@ public class UserLoginController {
                 logBean.setResponseInfo("success");
                 logBean.setRequestInfo("手机号"+loginnumber+"，验证码"+verification);
                 logBean.setLogTime(new Date());
+                logBean.setEid(emp.getId());
                 logBean.setFuncName("userLoginMethod");
                 logBean.setId(UUID.randomUUID().toString().replace("-",""));
             }else {

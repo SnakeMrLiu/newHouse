@@ -1,5 +1,6 @@
 package com.lbw.controller.emp;
 
+import com.lbw.interceptor.Access;
 import com.lbw.pojo.sellhouse.Emp;
 import com.lbw.service.emp.EmpService;
 import com.lbw.utils.OssClienUtils;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping(value = "emp")
+@Access(authorities = {"管理员"})
 public class EmpController {
 
     @Autowired

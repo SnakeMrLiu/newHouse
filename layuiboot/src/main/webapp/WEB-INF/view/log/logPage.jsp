@@ -32,14 +32,14 @@
                 , url: '../log/queryLoginLog.do?page=' + start + '&number=' + limitsize
                 , cols: [[
                     {checkbox: true}
-                    , {field: 'logTime', title: '时间', width: 150}
-                    , {field: 'ip', title: 'ip', width: 150}
-                    , {field: 'ipAddress', title: 'ip地址', width: 150}
-                    , {field: 'requestInfo', title: '请求信息', width: 150}
-                    , {field: 'responseInfo', title: '响应信息', width: 150}
+                    , {field: 'logTime', title: '时间', width: 200}
+                    , {field: 'ip', title: 'ip', width: 200}
+                    , {field: 'ipAddress', title: 'ip地址', width: 200}
+                    , {field: 'requestInfo', title: '请求信息', width: 300}
+                    , {field: 'responseInfo', title: '响应信息', width: 300}
                 ]]
                 , page: false
-                , height: 410
+                , height: 450
                 , done: function (res, curr, count) {
                     //如果是异步请求数据方式，res即为你接口返回的信息。
                     //如果是直接赋值的方式，res即为：{data: [], count: 99} data为当前页数据、count为数据总长度

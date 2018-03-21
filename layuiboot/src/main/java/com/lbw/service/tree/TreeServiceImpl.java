@@ -14,7 +14,7 @@ public class TreeServiceImpl implements TreeService {
     private TreeMapper treeMapper;
 
     @Override
-    public List<Tree> getTree() {
-        return treeMapper.getTree();
+    public List<Tree> getTree(String id) {
+        return treeMapper.getTree(id);
     }
 }
