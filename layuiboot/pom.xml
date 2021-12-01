@@ -17,7 +17,7 @@
 		<version>1.5.10.RELEASE</version>
 		<relativePath/>
 	</parent>
-	<!-- lookup parent from repository -->
+	<!-- lookup parent from repository as-->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
